@@ -7,6 +7,8 @@
 [#function getLinkTargets occurrence links={} activeOnly=true activeRequired=false ]
     [#local result={} ]
     [#list (valueIfContent(links, links, getOccurrenceSolution(occurrence).Links!{}))?values as link]
+        [@debug message="flibs-getlinktargets" context=link enabled=true /]
+         
         [#if link?is_hash]
             [#local linkTarget = getLinkTarget(occurrence, link, activeOnly, activeRequired) ]
             [#local result +=
